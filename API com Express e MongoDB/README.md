@@ -166,15 +166,6 @@ O terminal exibirá `servidor escutando!` e a API estará disponível em `http:/
 
 ---
 
-## 👩‍💻 Autora do Curso
-
-**Juliana Amoasei** — Desenvolvedora JavaScript e instrutora da Alura.
-
-- GitHub: [@JulianaAmoasei](https://github.com/JulianaAmoasei)
-- Twitter: [@aquijuz](https://twitter.com/aquijuz)
-
----
-
 ## 📝 Licença
 
 Este projeto foi desenvolvido para fins educacionais com base no curso da Alura. Livre para uso e adaptação.
