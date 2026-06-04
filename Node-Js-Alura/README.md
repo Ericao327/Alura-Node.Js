@@ -60,7 +60,23 @@ git clone https://github.com/Ericao327/Alura-Node.Js.git
 # Acesse a pasta do projeto
 cd Alura-Node.Js/Node-Js-Alura
 
-# Instale as dependências
+# Instale as dependências> git pull origin main
+From github.com:Ericao327/Alura-Node.Js
+ * branch            main       -> FETCH_HEAD
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+
 npm install
 ```
 
@@ -90,26 +106,9 @@ Node-Js-Alura/
 
 ---
 
-## ✨ Funcionalidades
-
-- ✅ Leitura de arquivos `.md` via linha de comando
-- ✅ Extração de links presentes no conteúdo Markdown
-- ✅ Exibição dos links encontrados com texto e URL
-- ✅ Tratamento de erros para arquivos inexistentes ou inválidos
-- ✅ Uso de Promises para operações assíncronas
-
----
 
 ## 📖 Referências
 
 - [Documentação oficial do Node.js](https://nodejs.org/docs/latest/api/)
 - [Curso na Alura — JavaScript com Node.js: criando sua primeira biblioteca](https://cursos.alura.com.br/course/javascript-node-js-criando-primeira-biblioteca)
 - [Repositório oficial do curso (Alura)](https://github.com/alura-cursos/2708-node-lib-md)
-
----
-
-## 👤 Autor
-
-Feito com 💙 por **Eric** — projeto de estudos desenvolvido como parte da formação em Node.js na Alura.
-
-[![GitHub](https://img.shields.io/badge/GitHub-Ericao327-181717?style=flat-square&logo=github)](https://github.com/Ericao327)
