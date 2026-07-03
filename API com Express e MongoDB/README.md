@@ -96,3 +96,6 @@ server.js                  # Ponto de entrada da aplicação
 
 Projeto desenvolvido por [Eric](https://github.com/Ericao327) durante os estudos de Node.js na Alura.
 
+<<<<<<< HEAD
+=======
+>>>>>>> 781857e (Adicionando arquivo README.md)
