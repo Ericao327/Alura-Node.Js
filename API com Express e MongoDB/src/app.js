@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from "mongoose";
 import db from "./config/dbConnect.js"
 import routes from "./routes/index.js"
 
@@ -10,5 +11,13 @@ db.once("open", () => {
 const app = express();
 app.use(express.json())
 routes(app);
+
+app.use((erro, req, res, next) => {
+  if (erro instanceof mongoose.Error.CastError) {
+        res.status(400).send({message: "Um ou mais dados fornecidos estão incorretos."});
+      } else {
+        res.status(500).send({message: "Erro interno de servidor."});
+      }
+});
 
 export default app
