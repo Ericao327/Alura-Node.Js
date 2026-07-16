@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import manipulador404 from "./middlewares/manipulador404.js";
 import db from "./config/dbConnect.js"
 import routes from "./routes/index.js"
 
@@ -11,6 +12,8 @@ db.once("open", () => {
 const app = express();
 app.use(express.json())
 routes(app);
+
+app.use(manipulador404);
 
 app.use(manipuladorDeErros());
 
