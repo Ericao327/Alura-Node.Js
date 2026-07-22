@@ -1,6 +1,6 @@
-import moongoose from "mongoose";
+import mongoose from "mongoose";
 
-moongose.Schema.Types.String.set("validate", {
-    validator: (valor) => valor !== "",
-    message: ({ path }) => `O campo '${path}' foi fornecido em branco.`
+mongoose.Schema.Types.String.set("validate", {
+  validator: (valor) => valor.trim() !== "",
+  message: ({ path }) => `O campo ${path} foi fornecido em branco.`
 });
