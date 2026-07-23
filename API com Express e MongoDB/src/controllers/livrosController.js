@@ -79,7 +79,7 @@ class LivroController {
 
   static listarLivroPorFiltro = async (req, res, next) => {
     try {
-      const busca = processaBusca(req.query);
+      const busca = await processaBusca(req.query);
       
       const livrosResultado = await livros.find(busca);
 
@@ -90,7 +90,7 @@ class LivroController {
   };
 }
 
-function processaBusca(parametros) {
+async function processaBusca(parametros) {
   const { editora, titulo, minPaginas, maxPaginas, nomeAutor } = parametros; 
 
       const busca = {};
@@ -107,7 +107,7 @@ function processaBusca(parametros) {
       if (maxPaginas) busca.numeroPaginas.$lte = maxPaginas;
       
       if (nomeAutor) {
-        const autor = autores.findOne({ nome: nomeAutor });
+        const autor = await autores.findOne({ nome: nomeAutor });
         const autorId = autor._id;
         busca.autor = autorId;
       }
