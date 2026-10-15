@@ -34,7 +34,7 @@ root.render(
     <BrowserRouter>
     <Header/>
       <Routes>
-        <Route path="favoritos" element={<p>Favoritos</p>} /> 
+        <Route path="favoritos" element={<Favoritos />} /> 
         <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
