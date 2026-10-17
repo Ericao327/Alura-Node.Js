@@ -50,13 +50,18 @@ function Pesquisa() {
     const [ livros, setLivros ] = useState([])
 
     useEffect(() => {
-        const livrosdaAPI = getLivros()
-        setLivros(livrosdaAPI)
+        fetchLivros()
     }, [])
 
     const livrosFiltrados = livros.filter((livro) =>
         livro.nome.toLowerCase().includes(textoPesquisa.toLowerCase())
     )
+
+    async function fetchLivros() {
+    const livrosdaAPI = await getLivros()
+    console.log("Resposta da API:", livrosdaAPI)
+    setLivros(livrosdaAPI)
+    }
 
     return (
         <PesquisaContainer>
