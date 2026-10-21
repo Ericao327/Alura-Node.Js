@@ -1,15 +1,16 @@
 import Input from '../Input'
 import styled from 'styled-components'
 import { useState } from 'react'
-import { useEffect } from 'react'
 import { getLivros } from '../../servicos/livros'
+import { useEffect } from 'react'
+import { postFavorito } from '../../servicos/favoritos'
 
 const PesquisaContainer = styled.section`
     background-image: linear-gradient(90deg, #002F52 35%, #326589 165%);
     color: #FFF;
     text-align: center;
     padding: 85px 0;
-    min-height: 270px;
+    height: 470px;
     width: 100%;
 `
 
@@ -17,6 +18,7 @@ const Titulo = styled.h2`
     color: #FFF;
     font-size: 36px;
     text-align: center;
+    width: 100%;
 `
 
 const Subtitulo = styled.h3`
@@ -46,45 +48,41 @@ const Resultado = styled.div`
 `
 
 function Pesquisa() {
-    const [textoPesquisa, setTextoPesquisa] = useState("")
-    const [ livros, setLivros ] = useState([])
+    const [livrosPesquisados, setLivrosPesquisados] = useState([])
+    const [livros, setLivros] = useState([])
 
     useEffect(() => {
         fetchLivros()
     }, [])
 
-    const livrosFiltrados = livros.filter((livro) =>
-        livro.nome.toLowerCase().includes(textoPesquisa.toLowerCase())
-    )
-
     async function fetchLivros() {
-    const livrosdaAPI = await getLivros()
-    console.log("Resposta da API:", livrosdaAPI)
-    setLivros(livrosdaAPI)
+        const livrosDaAPI = await getLivros()
+        setLivros(livrosDaAPI)
+    }
+
+    async function insereFavorito(id) {
+        await postFavorito(id)
+        alert(`O livro de id: ${id} foi inserido com sucesso`)
     }
 
     return (
         <PesquisaContainer>
             <Titulo>Já sabe por onde começar?</Titulo>
-
-            <Subtitulo>
-                Encontre seu livro em nossa estante.
-            </Subtitulo>
-
+            <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
             <Input
                 placeholder="Escreva sua próxima leitura"
-                value={textoPesquisa}
-                onChange={(evento) =>
-                    setTextoPesquisa(evento.target.value)
-                }
+                onBlur={evento => {
+                    const textoDigitado = evento.target.value
+                    const resultadoPesquisa = livros.filter( livro => livro.nome.includes(textoDigitado))
+                    setLivrosPesquisados(resultadoPesquisa)
+                }}
             />
-
-            {livrosFiltrados.map((livro) => (
-                <Resultado key={livro.nome}>
-                    <img src={livro.src} alt={livro.nome} />
+            { livrosPesquisados.map( livro => (
+                <Resultado onClick={() => insereFavorito(livro.id)}>
+                    <img src={livro.src}/>
                     <p>{livro.nome}</p>
                 </Resultado>
-            ))}
+            ) ) }
         </PesquisaContainer>
     )
 }
