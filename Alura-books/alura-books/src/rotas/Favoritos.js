@@ -45,21 +45,17 @@ const Titulo = styled.h2`
 
 function Favoritos() {
   const [favoritos] = useState([])
-  return (
-    <AppContainer>
-      <div>
-        <Titulo>Aqui estão seus livros favoritos:</Titulo>
-        <ResultadoContainer>
-          {
-            favoritos.length !== 0 ? favoritos.map(favorito => (
-              <Resultado>
-                <p>{favorito.nome}</p>
-                <img src={livroImg} alt={`Capa do livro ${favorito.nome}`} />
-              </Resultado>
-            )) : null
-          }
-        </ResultadoContainer>
-      </div>
+    return (
+        <AppContainer>
+            <Titulo>Aqui estão seus livros favoritos:</Titulo>
+                      <ResultadoContainer>
+        {favoritos.map(favorito => (
+          <Resultado>
+            <p>{favorito.nome}</p>
+            <img src={livroImg} alt={`Capa do livro ${favorito.nome}`} />
+          </Resultado>
+        ))}
+      </ResultadoContainer>
     </AppContainer>
   );
 }
